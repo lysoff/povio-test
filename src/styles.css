@@ -1,0 +1,9 @@
+.crypto {
+    display: flex;
+}
+
+.crypto_cell {
+    width: 150px;
+    background-color: #ccc;
+    padding: 8px;
+}
