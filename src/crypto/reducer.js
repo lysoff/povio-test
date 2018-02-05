@@ -1,4 +1,4 @@
-import { RECEIVE_CRYPTO, RECEIVE_CRYPTOS, REQUEST } from '../actions';
+import { RECEIVE_CRYPTO, RECEIVE_CRYPTOS, REQUEST } from './actions';
 
 const initialState = {
   list: [],

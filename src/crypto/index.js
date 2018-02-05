@@ -1,14 +1,14 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import Crypto from './Crypto';
+import ListItem from './ListItem';
 import { fetchCryptos } from "./actions";
 
 @connect(state => ({
   ...state.crypto,
   currency: state.settings.currency,
 }))
-export default class CryptoList extends React.Component {
+export default class List extends React.Component {
   loadCryptos = () => {
     const { currency, dispatch } = this.props;
 
@@ -39,10 +39,10 @@ export default class CryptoList extends React.Component {
           Refresh
         </button>
         {list.map((id) => (
-          <Crypto
+          <ListItem
             key={id}
             item={entities[id]}
-            symbol={currency}
+            currency={currency}
           />
         ))}
       </div>

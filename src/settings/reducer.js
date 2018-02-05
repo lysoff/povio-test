@@ -1,4 +1,4 @@
-import {CHANGE_CURRENCY} from "../actions";
+import { CHANGE_CURRENCY } from './actions';
 
 const initialState = {
   currency: 'USD'

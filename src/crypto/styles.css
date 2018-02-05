@@ -1,6 +1,4 @@
-.navigation {
-    padding: 8px;
-}
+
 
 .crypto {
     display: flex;
@@ -30,10 +28,3 @@
     padding: 8px;
 }
 
-.currency {
-    cursor: pointer;
-}
-
-.currency_active {
-    font-weight: bold;
-}

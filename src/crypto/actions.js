@@ -3,7 +3,6 @@ import 'whatwg-fetch';
 export const REQUEST = 'REQUEST';
 export const RECEIVE_CRYPTOS = 'RECEIVE_CRYPTOS';
 export const RECEIVE_CRYPTO = 'RECEIVE_CRYPTO';
-export const CHANGE_CURRENCY = 'CHANGE_CURRENCY';
 
 export const request = () => ({
   type: REQUEST,
@@ -32,8 +31,3 @@ export const fetchCrypto = (crypto, currency) => dispatch => {
     .then(res => res.json())
     .then(data => dispatch(receiveCrypto(data)));
 };
-
-export const changeCurrency = currency => ({
-  type: CHANGE_CURRENCY,
-  currency,
-});

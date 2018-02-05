@@ -2,50 +2,34 @@ import React from 'react';
 import {
   BrowserRouter as Router,
   Route,
-  Link,
   Switch,
 } from 'react-router-dom';
 
-import CryptoList from './CryptoList';
-import Settings from './Settings';
-import Details from './Details';
+import Header from './header';
+import List from './crypto';
+import Settings from './settings';
+import Details from './crypto/Details';
 
-import styles from './styles.css';
+export default () => (
+  <Router>
+    <div>
+      <Header />
+      <Switch>
+        <Route
+          exact
+          path={`/`}
+          component={List}
+        />
+        <Route
+          path={`/settings`}
+          component={Settings}
+        />
+        <Route
+          path={`/:id`}
+          component={Details}
+        />
+      </Switch>
+    </div>
+  </Router>
+);
 
-class App extends React.Component {
-  render() {
-    return (
-      <Router>
-        <div>
-          <div>
-            <Link
-              className={styles.navigation}
-              to="/"
-            >Back</Link>
-            <Link
-              className={styles.navigation}
-              to="/settings"
-            >Settings</Link>
-          </div>
-          <Switch>
-            <Route
-              exact
-              path={`/`}
-              component={CryptoList}
-            />
-            <Route
-              path={`/settings`}
-              component={Settings}
-            />
-            <Route
-              path={`/:id`}
-              component={Details}
-            />
-          </Switch>
-        </div>
-      </Router>
-    );
-  }
-}
-
-export default App;

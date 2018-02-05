@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import styles from './styles.css';
 import {fetchCrypto} from "./actions";
@@ -9,6 +10,17 @@ import {fetchCrypto} from "./actions";
   currency: state.settings.currency,
 }))
 export default class Details extends React.Component {
+  static propTypes = {
+    data: PropTypes.object,
+    currency: PropTypes.string,
+  };
+
+  loadCrypto = () => {
+    const { dispatch, currency, match } = this.props;
+
+    dispatch(fetchCrypto(match.params.id, currency));
+  };
+
   componentWillMount() {
     const { data } = this.props;
 
@@ -16,12 +28,6 @@ export default class Details extends React.Component {
       this.loadCrypto();
     }
   }
-
-  loadCrypto = () => {
-    const { dispatch, currency, match } = this.props;
-
-    dispatch(fetchCrypto(match.params.id, currency));
-  };
 
   render() {
     const { data, currency, loading } = this.props;

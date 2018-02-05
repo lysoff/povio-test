@@ -1,0 +1,7 @@
+.currency {
+    cursor: pointer;
+}
+
+.currency_active {
+    font-weight: bold;
+}
