@@ -7,7 +7,7 @@ export default () => (
     <Link
       className={styles.navigation}
       to="/"
-    >Back</Link>
+    >Home</Link>
     <Link
       className={styles.navigation}
       to="/settings"

@@ -1,4 +1,4 @@
 {
-  "presets": ["stage-0"],
+  "presets": ["env", "stage-0"],
   "plugins": ["transform-react-jsx", "transform-decorators-legacy"]
 }
