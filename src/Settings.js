@@ -1,24 +1,29 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
+import classNames from 'classnames';
+import { changeCurrency } from './actions';
+
+import styles from './styles.css';
 
 const currencies = ['USD', 'EUR', 'CNY'];
 
-@connect()
+@connect(state => ({
+  currency: state.settings.currency,
+}))
 export default class Settings extends React.Component {
   render() {
-    const { dispatch } = this.props;
+    const { dispatch, currency } = this.props;
 
     return (
       <div>
-        {currencies.map(currency => (
+        {currencies.map(item => (
           <div
-            key={currency}
-            onClick={() => dispatch({
-              type: 'SETTINGS/CHANGE-CURRENCY',
-              currency,
+            className={classNames(styles.currency, {
+              [styles.currency_active]: currency === item
             })}
-          >{currency}</div>
+            key={item}
+            onClick={() => dispatch(changeCurrency(item))}
+          >{item}</div>
         ))}
       </div>
     );

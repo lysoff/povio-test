@@ -1,9 +1,39 @@
+.navigation {
+    padding: 8px;
+}
+
 .crypto {
+    display: flex;
+    background-color: azure;
+}
+
+.crypto:hover {
+    background-color: bisque;
+    cursor: pointer;
+}
+
+.crypto__cell {
+    width: 150px;
+    padding: 8px;
+}
+
+.row {
     display: flex;
 }
 
-.crypto_cell {
+.label {
     width: 150px;
-    background-color: #ccc;
     padding: 8px;
+}
+
+.value {
+    padding: 8px;
+}
+
+.currency {
+    cursor: pointer;
+}
+
+.currency_active {
+    font-weight: bold;
 }

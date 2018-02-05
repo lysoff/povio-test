@@ -10,6 +10,7 @@ import CryptoList from './CryptoList';
 import Settings from './Settings';
 import Details from './Details';
 
+import styles from './styles.css';
 
 class App extends React.Component {
   render() {
@@ -17,8 +18,14 @@ class App extends React.Component {
       <Router>
         <div>
           <div>
-            <Link to='/'>Back</Link>
-            <Link to="/settings">Settings</Link>
+            <Link
+              className={styles.navigation}
+              to="/"
+            >Back</Link>
+            <Link
+              className={styles.navigation}
+              to="/settings"
+            >Settings</Link>
           </div>
           <Switch>
             <Route

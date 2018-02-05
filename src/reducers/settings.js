@@ -1,9 +1,11 @@
+import {CHANGE_CURRENCY} from "../actions";
+
 const initialState = {
   currency: 'USD'
 };
 
 const settings = (state = initialState, action) => {
-  if (action.type === 'SETTINGS/CHANGE-CURRENCY') {
+  if (action.type === CHANGE_CURRENCY) {
     return {
       currency: action.currency,
     }

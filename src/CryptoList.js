@@ -2,40 +2,32 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 import Crypto from './Crypto';
-
-const LIMIT = 100;
+import { fetchCryptos } from "./actions";
 
 @connect(state => ({
-  list: state.crypto.list,
-  loading: state.crypto.loading,
+  ...state.crypto,
   currency: state.settings.currency,
 }))
 export default class CryptoList extends React.Component {
-  loadCrypto = () => {
+  loadCryptos = () => {
     const { currency, dispatch } = this.props;
 
-    dispatch({ type: 'CRYPTO/LOADING' });
-    fetch(`https://api.coinmarketcap.com/v1/ticker/?convert=${currency}&limit=${LIMIT}`)
-      .then(res => res.json())
-      .then(data => dispatch({
-        type: 'CRYPTO/FETCH',
-        list: data,
-      }));
+    dispatch(fetchCryptos(currency));
   };
 
   componentWillMount() {
-    this.loadCrypto();
+    this.loadCryptos();
   }
 
   componentDidUpdate(prevProps) {
     const { match } = this.props;
     if (match.params.id !== prevProps.match.params.id) {
-      this.loadCrypto();
+      this.loadCryptos();
     }
   }
 
   render() {
-    const { list, loading, currency } = this.props;
+    const { list, entities, loading, currency } = this.props;
 
     if (loading) {
       return <div>Loading...</div>;
@@ -43,14 +35,13 @@ export default class CryptoList extends React.Component {
 
     return (
       <div>
-        <button onClick={this.loadCrypto}>
+        <button onClick={this.loadCryptos}>
           Refresh
         </button>
-        <div>Currency: {currency}</div>
-        {list.map((item) => (
+        {list.map((id) => (
           <Crypto
-            key={item.id}
-            item={item}
+            key={id}
+            item={entities[id]}
             symbol={currency}
           />
         ))}
